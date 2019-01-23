@@ -111,18 +111,6 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
     librsjni
 
-# JamesDSP
-PRODUCT_PACKAGES += \
-   libjamesdsp
-
-# DSPManager
-PRODUCT_PACKAGES += \
-    DSPManager
-
-# Phonograph
-#PRODUCT_PACKAGES += \
-#    Phonograph
-
 # Lineage packages
 PRODUCT_PACKAGES += \
     AudioFX \
