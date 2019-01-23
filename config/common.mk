@@ -123,8 +123,9 @@ PRODUCT_PACKAGES += \
 #PRODUCT_PACKAGES += \
 #    Phonograph
 
-# Jelly
+# Lineage packages
 PRODUCT_PACKAGES += \
+    AudioFX \
     Jelly
 
 # Omni Packages
