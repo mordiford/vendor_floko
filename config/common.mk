@@ -70,6 +70,10 @@ PRODUCT_COPY_FILES += \
     vendor/aicp/prebuilt/common/etc/permissions/privapp-permissions-turbo.xml:system/etc/permissions/privapp-permissions-turbo.xml \
     vendor/aicp/prebuilt/common/etc/sysconfig/turbo.xml:system/etc/sysconfig/turbo.xml
 
+# Power whitelist
+PRODUCT_COPY_FILES += \
+    vendor/aicp/config/permissions/aicp-power-whitelist.xml:system/etc/sysconfig/aicp-power-whitelist.xml
+
 # Omnijaws
 PRODUCT_COPY_FILES += \
     vendor/aicp/prebuilt/common/etc/permissions/privapp-permissions-omnijaws.xml:system/etc/permissions/privapp-permissions-omnijaws.xml
@@ -121,6 +125,10 @@ PRODUCT_PACKAGES += \
     OmniJaws \
     OmniSwitch
 
+# Fonts packages
+PRODUCT_PACKAGES += \
+    invictrix-fonts
+
 # Extra Optional packages
 PRODUCT_PACKAGES += \
     Calculator \
@@ -157,6 +165,9 @@ PRODUCT_PACKAGES += \
     libffmpeg_omx \
     media_codecs_ffmpeg.xml
 
+PRODUCT_PACKAGES += \
+    vim
+
 PRODUCT_PROPERTY_OVERRIDES += \
     media.sf.omx-plugin=libffmpeg_omx.so \
     media.sf.extractor-plugin=libffmpeg_extractor.so
@@ -168,6 +179,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Disable rescue party
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.disable_rescue=true
+
+# codeaurora telephony-ext
+PRODUCT_PACKAGES += \
+   telephony-ext
+
+PRODUCT_BOOT_JARS += \
+    telephony-ext
 
 # easy way to extend to add more packages
 -include vendor/extra/product.mk
@@ -184,29 +202,6 @@ PRODUCT_PACKAGES += \
 
 # Versioning System
 # AICP first version.
-PRODUCT_VERSION_MAJOR = 9
-PRODUCT_VERSION_MINOR = 0
-PRODUCT_VERSION_MAINTENANCE = 0
-AICP_POSTFIX := -$(shell date +"%Y%m%d-%H%M")
-ifdef AICP_BUILD_EXTRA
-    AICP_POSTFIX := -$(AICP_BUILD_EXTRA)
-endif
-
-ifndef AICP_BUILDTYPE
-    AICP_BUILDTYPE := UNOFFICIAL
-endif
-
-# Set all versions
-AICP_VERSION :=Floko-$(AICP_BUILD)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-$(AICP_BUILDTYPE)$(AICP_POSTFIX)
-AICP_MOD_VERSION := Floko-$(AICP_BUILD)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-$(AICP_BUILDTYPE)$(AICP_POSTFIX)
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    BUILD_DISPLAY_ID=$(BUILD_ID) \
-    aicp.ota.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE) \
-    ro.aicp.version=$(AICP_VERSION) \
-    ro.modversion=$(AICP_MOD_VERSION) \
-    ro.aicp.buildtype=$(AICP_BUILDTYPE)
-
 include vendor/aicp/config/aicp_version.mk
 
 # Google sounds
