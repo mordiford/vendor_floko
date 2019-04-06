@@ -38,3 +38,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     WeatherClient \
     OmniSwitch
+
+# Why do you need Google Apps? Because...
+ifeq ($(WITH_GAPPS),true)
+include vendor/lineage/config/gapps.mk
+endif
