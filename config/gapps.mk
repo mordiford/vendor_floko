@@ -6,11 +6,12 @@ GAPPS_VARIANT := mini
 # Add some extra packages
 GAPPS_PRODUCT_PACKAGES += \
 	Chrome \
-	ContactsGoogle \
-	DialerGoogle \
 	KeyboardGoogle \
 	ClockGoogle \
 	Translate
+
+# Force stock package overrides for all
+GAPPS_FORCE_PACKAGE_OVERRIDES := true
 
 # Exclude some packages
 GAPPS_EXCLUDED_PACKAGES := \
@@ -19,7 +20,5 @@ GAPPS_EXCLUDED_PACKAGES := \
 	TagGoogle \
 	YouTube
 
-# Force stock package overrides for all
-GAPPS_FORCE_PACKAGE_OVERRIDES := true
-
+# See https://github.com/opengapps/aosp_build/blob/master/README.md
 $(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
